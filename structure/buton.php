@@ -4,10 +4,20 @@
 		$title = $_POST['title'];
 		$category = $_POST['category'];
 		$text = $_POST['text'];
-		echo $title;
-		echo $category;
-		echo $text;
         mysqli_query($connect, "INSERT INTO `newnote`(`title`, `category`, `text`) VALUES('$title', '$category', '$text'); ");
-        echo "string";
+	}
+	if (isset($_POST['RD'])) {
+		$connect = mysqli_connect('localhost', 'root', '', 'notes');
+		$title = $_POST['title'];
+		$category = $_POST['category'];
+		$text = $_POST['text'];
+		$sql = "UPDATE newnote ";
+	    $sql .= "SET title = '$title', category = '$category', text = '$text' WHERE id = '$id' ";
+	    $result = mysqli_query($connect, $sql);
+		?>
+			<script type="text/javascript">
+	  			window.location.href = "category.php";
+			</script>
+		<?	
 	}
 ?>

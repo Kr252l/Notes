@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>JPhotography - Minimal Photography Portfolio HTML5 Template</title>
+    <title>Нотатка</title>
     <meta name="description" content="JPhotography - Minimal Photography Portfolio HTML5 Template">
     
     <!-- Playfair Display - Raleway Fonts -->
@@ -18,8 +18,6 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/dark-theme.css">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-
   
   </head>
   <body>

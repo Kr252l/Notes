@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>JPhotography Minimal Photographey/Photographer Portolio</title>
+    <title>Категорії</title>
     <meta name="description" content="JPhotography Minimal Photographey/Photographer Portolio">
     
     <!-- Playfair Display - Raleway Fonts -->
@@ -33,7 +33,7 @@
     ?>
 
     <?php
-    $connect = mysqli_connect('localhost', 'root', '', 'notes');
+      include 'config.php';
     ?>
     <!-- Corner Borders -->
     <section class="borders">
@@ -51,10 +51,60 @@
     <br>
     <br>
     <div class="container">
-      <form method="POST" action="about-me.php">
-                  
-      </form> 
+      <div id="accordion">
+        <?
+          while ($post = mysqli_fetch_assoc($new1)) {
+            $name = $post['name'];
+        ?>
+        <div class="card">
+          <div class="card-header" id="heading<? print $name; ?>">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<? print $name; ?>" aria-expanded="true" aria-controls="collapse<? print $name; ?>">
+                <? print $name; ?>
+              </button>
+            </h5>
+          </div>
+
+          <div id="collapse<? print $name; ?>" class="collapse show" aria-labelledby="heading<? print $name; ?>" data-parent="#accordion">
+            <div class="card-body">
+              <?
+                $connect = mysqli_connect('localhost', 'root', '', 'notes');
+                $newnotes = mysqli_query($connect, "SELECT * FROM newnote");
+                while($host = mysqli_fetch_assoc($newnotes)) {
+                  if($host['category'] == $name){
+              ?>
+                  <div class="row">
+                    <div class="col-md-2">
+                      <h3 style="color: #000;"><? print $host['title']; ?></h3>
+                    </div>
+                    <div class="col-md-6">
+                      <h6 style="color: #000;"><? print $host['text']; ?></h6>
+                    </div>
+                    <div class="col">
+                      <div style=" height: 50px;" class="btn-group" role="group" aria-label="Basic example">
+
+                        <a class="btn btn-dark" href="delete.php?k=0&id=<?echo $host['id']?>">Редагувати</a>
+                        <a href="delete.php?k=1&id=<?echo $host['id']?>" class="btn btn-dark">Видалити</a>
+
+                      </div>
+                    </div>
+                  </div>
+                <hr>
+              <?
+                  }
+                }
+              ?>
+          </div>
+        </div>
+        <?
+          }
+        ?>
+      </div> 
     </div>
+
+    <?php
+      include 'structure/buton.php';
+    ?>
 
     <?php
       include 'structure/footer.php';
