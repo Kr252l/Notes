@@ -41,7 +41,7 @@
       <form method="POST">
         <div class="row">  
           <div class="col-md-4">
-            <textarea required required style="height: 42px;" class="form-control" id="exampleFormControlTextarea1" rows="6" placeholder="Введіть назву" name="title"><? 
+            <textarea required required style="height: 42px;" class="form-control" id="exampleFormControlTextarea1" rows="6" placeholder="Введіть нотатку" name="title"><? 
               if ($get_title != "") {
                 echo $get_title;
               }
