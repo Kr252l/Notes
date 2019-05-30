@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>JPhotography - Minimal Photography Portfolio HTML5 Template</title>
+    <title>Нотатка</title>
     <meta name="description" content="JPhotography - Minimal Photography Portfolio HTML5 Template">
     
     <!-- Playfair Display - Raleway Fonts -->
@@ -18,13 +18,14 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/dark-theme.css">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-
   
   </head>
   <body>
     
-
+    <?
+      $get_title = $_GET['title'];
+      $get_text = $_GET['text'];
+    ?>
     <!--bd-->
     <?php
     include 'config.php';
@@ -37,10 +38,14 @@
     <br>
     <br>
     <div class="container">
-      <form method="POST" action="index.php">
+      <form method="POST">
         <div class="row">  
           <div class="col-md-4">
-            <input required name="title" style="height: 42px;" placeholder="Введіть назву нотатки" class="form-control">
+            <textarea required required style="height: 42px;" class="form-control" id="exampleFormControlTextarea1" rows="6" placeholder="Введіть назву" name="title"><? 
+              if ($get_title != "") {
+                echo $get_title;
+              }
+            ?></textarea>
             <br>
             <div class="btn-group" style="width: 100%; height: 42px;" role="group" aria-label="Button group with nested dropdown">
                 <select name="category" style="height: 42px;" class="btn btn-secondary form-control" id="exampleFormControlSelect1">
@@ -58,11 +63,24 @@
           <div class="col-md-1">
           </div>
           <div class="col-md-7 text-right">
-            <textarea required required class="form-control" id="exampleFormControlTextarea1" rows="6" placeholder="Введіть нотатку" name="text"></textarea>
+            <textarea required required class="form-control" id="exampleFormControlTextarea1" rows="6" placeholder="Введіть нотатку" name="text"><? 
+              if ($get_text != "") {
+                echo $get_text;
+              }
+            ?></textarea>
             <br>
             <button name="add" class="btn btn-dark">Додати</button>
           </div>
         </div>
+        <?
+          if ($get_text != "") {
+            ?>
+            <div class="container text-center">
+              <h2>Ви не ввели категорію!</h2>
+            </div>
+            <?
+          }
+        ?>
       </form>
     </div>
     

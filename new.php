@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>JPhotography Minimal Photographey/Photographer Portolio</title>
+    <title>Категорія</title>
     <meta name="description" content="JPhotography Minimal Photographey/Photographer Portolio">
     
     <!-- Playfair Display - Raleway Fonts -->
@@ -51,7 +51,7 @@
     <br>
     <br>
     <div class="container">
-      <form method="POST" action="about-me.php">
+      <form method="POST">
         <div class="row">
           <div class="col-md-3"></div>
           <div class="input-group col-md-5">
@@ -68,6 +68,11 @@
       if(isset($_POST['addc'])){
         $textc = $_POST['textc'];
         mysqli_query($connect, "INSERT INTO `new`(`name`) VALUES('$textc'); ");
+        ?>
+          <script type="text/javascript">
+              window.location.href = "index.php";
+          </script>
+        <?
       }
     ?>
 
